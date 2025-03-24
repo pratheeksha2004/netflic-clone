@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import apiService from '../service/apiService';
 import { Link } from 'react-router-dom';
 import './Home.css';
 import movieData from './movieData'; // Import your movieData.js
+import { ThemeContext } from '../contexts/ThemeContext';
 
 function Home() {
+    const { theme } = useContext(ThemeContext); // Access the theme
+
     const [latestMovie, setLatestMovie] = useState(null);
     const [movies, setMovies] = useState([]); // Movies from the API
     const [loading, setLoading] = useState(true);
@@ -12,7 +15,7 @@ function Home() {
     const [searchTerm, setSearchTerm] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [totalResults, setTotalResults] = useState(0);
-    const moviesPerPage = 10;
+    const [moviesPerPage, setMoviesPerPage] = useState(10);
     const [favorites, setFavorites] = useState(() => {
         const storedFavorites = localStorage.getItem('favorites');
         return storedFavorites ? JSON.parse(storedFavorites) : [];
@@ -48,8 +51,15 @@ function Home() {
 
     const fetchTrendingMovies = async () => {
         try {
-            const trendingData = await apiService.getTrendingMovies();
+            let trendingData = await apiService.getTrendingMovies();
+
+            //Add Rating to Trending Movies (if possible)
+            trendingData = trendingData.map(movie => ({
+                ...movie,
+                rating: getRating(movie) || 'N/A' // Use the combined rating logic
+            }));
             setTrendingMovies(trendingData || []);
+
         } catch (error) {
             console.error('Error fetching trending movies:', error);
         }
@@ -57,8 +67,15 @@ function Home() {
 
     const fetchNewReleases = async () => {
         try {
-            const newReleasesData = await apiService.getNewReleases();
+            let newReleasesData = await apiService.getNewReleases();
+
+            // Add Rating to New Releases (if possible)
+            newReleasesData = newReleasesData.map(movie => ({
+                ...movie,
+                rating: getRating(movie) || 'N/A' // Use the combined rating logic
+            }));
             setNewReleases(newReleasesData || []);
+
         } catch (error) {
             console.error('Error fetching new releases:', error);
         }
@@ -87,7 +104,13 @@ function Home() {
                 const data = await apiService.searchMovies(finalSearchTerm, currentPage);
 
                 if (data && data.Response === "True") {  // Check if data exists AND Response is True
-                    setMovies(data.Search || []);
+                    //Add Rating to Movies
+                    const moviesWithRating = data.Search.map(movie => ({
+                        ...movie,
+                        rating: getRating(movie) || 'N/A' // Use the combined rating logic
+                    }));
+                    setMovies(moviesWithRating);
+
                     setTotalResults(parseInt(data.totalResults) || 0);
                 } else {
                     // Handle the case where no movies are found or there's an error
@@ -164,9 +187,40 @@ function Home() {
         setGenreFilteredMovies(filteredMovies);
     };
 
+    // Helper function to extract IMDb rating from the Ratings array
+    const getRatingFromRatingsArray = (ratings, source) => {
+        if (!ratings || !Array.isArray(ratings)) {
+            return null;
+        }
+
+        const rating = ratings.find(rating => rating.Source === source);
+        return rating ? rating.Value : null;
+    };
+
+    // Combined function to get rating from either Ratings array or imdbRating
+    const getRating = (movie) => {
+        // Try to get rating from the Ratings array first
+        const ratingFromRatings = getRatingFromRatingsArray(movie.Ratings, 'Internet Movie Database');
+        if (ratingFromRatings) {
+            return ratingFromRatings;
+        }
+
+        // If not found in Ratings, try to get it from imdbRating directly
+        if (movie.imdbRating) {
+            return movie.imdbRating;
+        }
+         if (movie.rating) {
+            return movie.rating;
+        }
+
+        // If neither is found, return null
+        return null;
+    };
+
 
     return (
         <div className="home-page">
+           
             {/* Hero Banner */}
             {latestMovie && (
                 <div className="hero-banner" style={{ backgroundImage: `url(${latestMovie.Poster})` }}>
@@ -213,10 +267,9 @@ function Home() {
                                         <Link to={`/movie/${movie.imdbID}`}>
                                             <img src={movie.Poster} alt={movie.Title} />
                                             <h3>{movie.Title}</h3>
+                                            <p><strong>Rating:</strong> {movie.rating}</p>
                                         </Link>
-                                        <button className="favorite-button" onClick={() => toggleFavorite(movie)}>
-                                            {isFavorite(movie) ? 'Remove from Favorites' : 'Add to Favorites'}
-                                        </button>
+
                                     </div>
                                 ))}
                             </>
@@ -253,6 +306,7 @@ function Home() {
                                 <Link to={`/movie/${movie.imdbID}`}> {/* Use imdbID to link to movie details */}
                                     <img src={movie.poster} alt={movie.title} />
                                     <h3>{movie.title}</h3>
+
                                 </Link>
                             </div>
                         ))}
@@ -273,7 +327,7 @@ function Home() {
                                     <Link to={`/movie/${movie.imdbID}`}>
                                         <img src={movie.Poster} alt={movie.Title} />
                                         <h3>{movie.Title}</h3>
-
+                                        <p><strong>Rating:</strong> {movie.rating}</p>
                                     </Link>
                                 </div>
                             ))}
@@ -289,6 +343,7 @@ function Home() {
                                     <Link to={`/movie/${movie.imdbID}`}>
                                         <img src={movie.Poster} alt={movie.Title} />
                                         <h3>{movie.Title}</h3>
+                                        <p><strong>Rating:</strong> {movie.rating}</p>
                                     </Link>
                                 </div>
                             ))}

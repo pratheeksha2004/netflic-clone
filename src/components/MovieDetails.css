@@ -1,35 +1,74 @@
 /* MovieDetails.css */
 
 .movie-details-container {
-    padding: 20px;
+  padding: 20px;
+  background-color: #141414; /* Netflix dark background */
+  color: #fff;
+}
+
+.movie-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.movie-poster {
+  width: 300px; /* Adjust the width as needed */
+  margin-bottom: 20px;
+}
+
+.movie-poster img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add a subtle shadow */
+}
+
+.movie-info {
+  margin-bottom: 20px;
+}
+
+.movie-info p {
+  margin-bottom: 10px;
+}
+
+.movie-info strong {
+  font-weight: bold;
+  color: #e50914; /* Netflix red color for emphasis */
+}
+
+.ratings {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.ratings ul {
+  list-style: none;
+  padding: 0;
+}
+
+.ratings li {
+  margin-bottom: 5px;
+}
+
+/* Add to Favorites Button */
+.favorite-button {
+  background-color: #e50914; /* Netflix red */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+      background-color: #c60712; /* Darker red on hover */
   }
-  
-  .movie-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+
+  &:focus {
+      outline: none; /* Remove default focus outline */
+      box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.5); /* Add a custom focus style */
   }
-  
-  .movie-poster {
-    width: 300px; /* Adjust the width as needed */
-    margin-bottom: 20px;
-  }
-  
-  .movie-poster img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-  }
-  
-  .movie-info {
-    margin-bottom: 20px;
-  }
-  
-  .movie-info p {
-    margin-bottom: 10px;
-  }
-  
-  .movie-info strong {
-    font-weight: bold;
-  }
+}

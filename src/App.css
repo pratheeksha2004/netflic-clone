@@ -5,6 +5,7 @@ body, html {
   height: 100%;         /* Make sure body and html take up full height */
   margin: 0;            /* Reset default margins */
   font-family: sans-serif; /* Set a default font */
+  transition: background-color 0.3s, color 0.3s;
 }
 
 /* Main App Container */
@@ -36,4 +37,20 @@ body, html {
 /* or, scope this to where it exists now */
 .read-the-docs {
   color: #888;
+}
+/* App.css */
+/* App.css */
+
+body {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark {
+  background-color: #141414 !important;
+  color: #fff !important;
+}
+
+body.light {
+  background-color: #fff !important;
+  color: #141414 !important;
 }
