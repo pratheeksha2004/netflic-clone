@@ -1,0 +1,39 @@
+/* App.css */
+
+/* Global Styles */
+body, html {
+  height: 100%;         /* Make sure body and html take up full height */
+  margin: 0;            /* Reset default margins */
+  font-family: sans-serif; /* Set a default font */
+}
+
+/* Main App Container */
+#root {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  min-height: 100vh;      /* At least full viewport height */
+  text-align: center;     /* Keep text centered by default */
+}
+
+/* Main Content Area */
+.main-content {
+  flex-grow: 1;       /* Fill remaining space */
+  padding: 2rem;       /* Add some padding */
+}
+
+/* (Potentially Conflicting Styles Removed) */
+/* Removed styles related to the logo animation and scaling. */
+/* If the animation was causing performance issues or layout shifts, */
+/* it's best to handle it separately in the Navbar component's CSS. */
+
+/* Generic Card Styles (Removed for now) */
+/* The .card style might have been too generic and affecting other */
+/* elements. If you need card styles, apply them more specifically */
+/* to the desired components. */
+
+/* Read the Docs (Removed) */
+/* If it's necessary, re-add and scope only to Docs component. */
+/* or, scope this to where it exists now */
+.read-the-docs {
+  color: #888;
+}

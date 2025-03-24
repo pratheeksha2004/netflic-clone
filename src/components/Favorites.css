@@ -1,0 +1,73 @@
+/* Favorites.css */
+
+.favorites-page {
+    padding: 20px;
+    background-color: #141414; /* Dark background */
+    color: #fff;
+}
+
+.favorites-page h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.favorites-list {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    padding-bottom: 15px; /* Add some space for scrollbar */
+}
+
+.favorite-card {
+    flex: 0 0 auto; /* Do not grow or shrink, keep the specified width */
+    width: 200px; /* Adjust the width as needed */
+    margin-right: 10px; /* Add some spacing between cards */
+    background-color: #222;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.favorite-card:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.favorite-card a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 10px;
+}
+
+.favorite-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-bottom: 1px solid #333;
+}
+
+.favorite-card h3 {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+.favorite-card p {
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+.remove-button {
+    padding: 8px 12px;
+    font-size: 0.9em;
+    background-color: #e50914; /* Netflix red */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px;
+}
+
+.remove-button:hover {
+    background-color: #b20710; /* Darker red on hover */
+}

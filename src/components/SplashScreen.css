@@ -1,0 +1,88 @@
+/* src/components/SplashScreen.css */
+
+/* Fullscreen overlay */
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* Animate background to dark red */
+.splash-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #141212;
+  opacity: 0;
+  animation: backgroundColorFadeIn 1.5s forwards;
+  z-index: -1;
+}
+
+
+/* Container to center logo and control its zoom */
+.splash-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  max-width: 600px;
+  height: auto;
+  overflow: hidden;
+}
+
+/* Style for the "N" logo container */
+.splash-logo-container.n-logo {
+  width: 20%;
+  max-width: 200px;
+  animation: fadeInN 1s ease-in-out 0.5s forwards, fadeOutN 0.5s ease-in-out 1s forwards; /* Fade Out */
+}
+
+/* Style for the full logo container */
+.splash-logo-container.full-logo {
+   opacity: 0; /* Start hidden */
+   animation: fadeInFull 1s ease-in-out 1.5s forwards; /* Delay to show */
+}
+
+/* Style for the logo */
+.splash-logo {
+  width: 100%;
+  height: auto;
+}
+
+/* Keyframe animations */
+
+@keyframes backgroundColorFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInN {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOutN {
+  to {
+    opacity: 0; /* Fade out */
+  }
+}
+
+
+@keyframes fadeInFull {
+  to {
+    opacity: 1;
+  }
+}
