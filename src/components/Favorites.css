@@ -1,9 +1,8 @@
 /* Favorites.css */
 
+/* Base styles (apply to both themes) */
 .favorites-page {
     padding: 20px;
-    background-color: #141414; /* Dark background */
-    color: #fff;
 }
 
 .favorites-page h2 {
@@ -14,27 +13,25 @@
 
 .favorites-list {
     display: flex;
-    overflow-x: auto; /* Enable horizontal scrolling */
-    padding-bottom: 15px; /* Add some space for scrollbar */
+    overflow-x: auto;
+    padding-bottom: 15px;
 }
 
 .favorite-card {
-    flex: 0 0 auto; /* Do not grow or shrink, keep the specified width */
-    width: 200px; /* Adjust the width as needed */
-    margin-right: 10px; /* Add some spacing between cards */
-    background-color: #222;
+    flex: 0 0 auto;
+    width: 200px;
+    margin-right: 10px;
     border-radius: 8px;
     overflow: hidden;
     transition: transform 0.3s ease;
 }
 
 .favorite-card:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
+    transform: scale(1.05);
 }
 
 .favorite-card a {
     text-decoration: none;
-    color: #fff;
     display: block;
     padding: 10px;
 }
@@ -53,14 +50,11 @@
 
 .favorite-card p {
     font-size: 0.9em;
-    color: #ccc;
 }
 
 .remove-button {
     padding: 8px 12px;
     font-size: 0.9em;
-    background-color: #e50914; /* Netflix red */
-    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -68,6 +62,68 @@
     margin: 10px;
 }
 
+/* Dark theme styles */
+.favorites-page.dark-mode {
+    background-color: #141414;
+    color: #fff;
+}
+
+.favorite-card.dark-mode {
+    background-color: #222;
+    color: #fff;
+}
+
+.favorite-card.dark-mode a {
+    color: #fff;
+}
+
+.favorite-card.dark-mode img {
+    border-bottom: 1px solid #333;
+}
+
+.favorite-card.dark-mode p {
+    color: #ccc;
+}
+
+.remove-button {
+  background-color: #e50914;
+  color: #fff;
+}
+
 .remove-button:hover {
-    background-color: #b20710; /* Darker red on hover */
+    background-color: #b20710;
+}
+
+
+
+/* Light theme styles */
+.favorites-page.light-mode {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.favorite-card.light-mode {
+    background-color: #fff;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Example shadow for light mode */
+}
+
+.favorite-card.light-mode a {
+    color: #333;
+}
+
+.favorite-card.light-mode img {
+    border-bottom: 1px solid #eee; /* Lighter border for light mode */
+}
+
+.favorite-card.light-mode p {
+    color: #666;
+}
+.remove-button {
+    background-color: #dc3545; /* Bootstrap danger red */
+    color: #fff;
+}
+
+.remove-button:hover {
+    background-color: #c82333;
 }

@@ -6,6 +6,8 @@ import SplashScreen from './components/SplashScreen'; // Import SplashScreen
 import Navbar from './components/Navbar'; // Import Navbar
 import Favorites from './components/Favorites';
 import Footer from './components/Footer';
+import TVShows from './pages/TVShows'; // Import TVShows
+import Kids from './pages/Kids'; // Import Kids
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ThemeProvider } from './contexts/ThemeContext'; // Import ThemeProvider
 
@@ -28,6 +30,8 @@ function App() {
                                 <Route path="/" element={<Home />} />
                                 <Route path="/favorites" element={<Favorites />} />
                                 <Route path="/movie/:imdbID" element={<MovieDetails />} />
+                                <Route path="/tvshows" element={<TVShows />} /> {/* Add TVShows route */}
+                                <Route path="/kids" element={<Kids />} /> {/* Add Kids route */}
                             </Routes>
                         </main>
                         <Footer /> {/* Footer outside Routes */}

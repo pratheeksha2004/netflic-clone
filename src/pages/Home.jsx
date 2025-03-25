@@ -30,9 +30,10 @@ function Home() {
     // Define available genres - Use ONLY these genres
     const genres = [
         'Action',
+        'Drama',
         'Comedy',
-        'Horror',
-        'Drama'
+        'Horror'
+        
     ];
 
     useEffect(() => {

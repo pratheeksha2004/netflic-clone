@@ -106,6 +106,19 @@ const apiService = {
             throw error;
         }
     },
+    searchTVShows: async (searchTerm, page = 1) => {
+        try {
+            const response = await fetch(`${BASE_URL}?s=${searchTerm}&type=series&page=${page}&apikey=${API_KEY}`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error("Error searching TV shows:", error);
+            throw error;
+        }
+    },
     getTrendingMovies: async () => {
         // Simulate trending movies using a hardcoded list of IMDb IDs
         const trendingMovieIds = [
@@ -119,6 +132,7 @@ const apiService = {
             'tt0109830', // Forrest Gump
             'tt0317219', // Cars
             'tt1130884'  // Shutter Island
+
         ];
 
         try {

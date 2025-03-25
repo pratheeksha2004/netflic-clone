@@ -1,0 +1,103 @@
+/* src/Kids.css */
+
+.kids-page {
+    font-family: 'Netflix Sans', sans-serif;
+    padding: 20px;
+    transition: background-color 0.3s, color 0.3s; /* Add transition */
+}
+
+/* Dark theme styles */
+.kids-page.dark {
+    background-color: #141414; /* Netflix dark background */
+    color: #fff;
+}
+
+/* Light theme styles */
+.kids-page.light {
+    background-color: #fff; /* Lighter background for kids content */
+    color: #141414;
+}
+
+.kids-page h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.kids-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Same grid columns as Home.css */
+    gap: 20px;
+}
+
+.kids-card {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative; /* Required for absolute positioning */
+    transition: transform 0.2s, box-shadow 0.2s;
+    will-change: transform;
+    width: 200px; /* Match width to Home.css */
+}
+
+/* kids page dark card */
+.kids-page.dark .kids-card {
+    background-color: #222;
+    color: #fff;
+}
+
+.kids-card:hover {
+    transform: scale(1.15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.kids-card a {
+    text-decoration: none;
+    color: #141414;
+    display: block; /* Make entire card clickable */
+}
+
+/* Dark to use dark style for a text if it exit*/
+.kids-page.dark .kids-card a {
+    text-decoration: none;
+    color: #fff;
+    display: block; /* Make entire card clickable */
+}
+
+.kids-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.2s;
+}
+
+.kids-card h3, .kids-card p {
+    padding: 10px;
+    font-size: 1.2em;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin: 0;
+    transition: bottom 0.2s, top 0.2s;
+    will-change: bottom, top;
+}
+
+.kids-card h3 {
+    bottom: 0;
+    color: #fff;
+}
+
+.kids-card p {
+    top: 100%;
+    color: #fff;
+}
+
+.kids-card:hover h3 {
+    bottom: 30px; /* Move title up on hover */
+}
+
+.kids-card:hover p {
+    top: 30px;
+}

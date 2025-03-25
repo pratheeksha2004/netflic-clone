@@ -20,6 +20,12 @@ function Navbar() {
                     <Link to="/">Home</Link>
                 </li>
                 <li>
+                    <Link to="/tvshows">TV Shows</Link>
+                </li>
+                <li>
+                    <Link to="/kids">Kids</Link>
+                </li>
+                <li>
                     <Link to="/favorites">Favorites</Link>
                 </li>
                 <li className="theme-toggle-container">

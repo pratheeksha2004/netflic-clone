@@ -1,0 +1,154 @@
+.tvshows-page {
+    font-family: 'Netflix Sans', sans-serif;
+    padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Apply dark theme styles */
+.tvshows-page.dark {
+    background-color: #141414;
+    color: #fff;
+}
+
+/* Apply light theme styles */
+.tvshows-page.light {
+    background-color: #fff;
+    color: #141414;
+}
+
+.tvshows-page h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+}
+
+.btn {
+    color: #fff;
+    background-color: #e50914;
+}
+
+.search-bar input[type="text"] {
+    padding: 10px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    outline: none;
+    width: 100%;
+}
+
+.tvshow-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.tvshow-card {
+    background-color: #222;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+    will-change: transform;
+    width: 200px;
+}
+
+/* Make card dark if the theme is dark*/
+.tvshows-page.dark .tvshow-card {
+    background-color: #222;
+    color: #fff;
+}
+
+.tvshow-card:hover {
+    transform: scale(1.15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.tvshow-card a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+}
+
+/* Set title to be white in dark color mode on hover/default */
+.tvshows-page.dark .tvshow-card a {
+        text-decoration: none;
+        color: #fff;
+        display: block;
+}
+
+.tvshow-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.2s;
+}
+
+.tvshow-card h3,
+.tvshow-card p {
+    padding: 10px;
+    font-size: 1.2em;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin: 0;
+    transition: bottom 0.2s, top 0.2s;
+    will-change: bottom, top;
+}
+
+.tvshow-card h3 {
+    bottom: 0;
+    color: #fff;
+}
+
+.tvshow-card p {
+    top: 100%;
+    color: #fff;
+}
+
+.tvshow-card:hover h3 {
+    bottom: 30px;
+}
+
+.tvshow-card:hover p {
+    top: 30px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+}
+
+.pagination button:hover {
+    background-color: #c60712;
+}
+
+.pagination button:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+}
+
+.pagination span {
+    margin: 0 20px;
+    font-size: 1.1em;
+}

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import apiService from '../service/apiService';
 import './MovieDetails.css'; // Import CSS for styling (create this file)
+import LoadingSpinner from '../components/LoadingSpinner'; // Import LoadingSpinner
 
 function MovieDetails() {
     const { imdbID } = useParams();
@@ -67,7 +68,7 @@ function MovieDetails() {
     }, [imdbID]);
 
     if (loading) {
-        return <p>Loading movie details...</p>;
+        return <LoadingSpinner />; // Display the spinner while loading
     }
 
     if (error) {
