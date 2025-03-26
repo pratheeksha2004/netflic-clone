@@ -1,4 +1,8 @@
 # Netflix Clone Project (Frontend)
+
+## Visual Showcase
+
+This section provides a visual tour of the application, highlighting key features and design elements in a user-flow-centric order.
 ### 1. Splash Screen
 
 The initial landing page provides an introduction to the application.
