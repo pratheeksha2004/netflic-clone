@@ -1,13 +1,11 @@
 /* Home.css */
 
 .home-page {
-    font-family: 'Netflix Sans', sans-serif;
-   
-    
+    font-family: 'Roboto', sans-serif;
     background-color: #141414;
     color: #fff;
     padding: 20px;
-    transition: background-color 0.3s, color 0.3s; /* Add transition */
+    transition: background-color 0.3s, color 0.3s; 
 }
 
 
@@ -111,38 +109,38 @@
     background-color: #222;
     border-radius: 5px;
     overflow: hidden;
-    position: relative;  /* Required for absolute positioning of overlay */
-    transition: transform 0.2s, box-shadow 0.2s; /* Smoother transitions */
+    position: relative;  
+    transition: transform 0.2s, box-shadow 0.2s; 
     will-change: transform; /* Optimize for animation */
 
     &:hover {
-        transform: scale(1.15); /* Increased scale for more pop */
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7); /* Stronger shadow */
+        transform: scale(1.15); 
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7); 
         z-index: 1; /* Bring card forward on hover */
     }
 
     a {
         text-decoration: none;
         color: #fff;
-        display: block; /* Make the entire card clickable */
+        display: block; 
     }
 
     img {
         width: 100%;
         height: auto;
         display: block;
-        transition: opacity 0.2s; /* Smoother fade-in effect on image */
+        transition: opacity 0.2s; 
     }
 
     h3 {
         padding: 10px;
         font-size: 1.2em;
         text-align: center;
-        position: absolute; /* Position title over image */
+        position: absolute; 
         bottom: 0;
         left: 0;
         width: 100%;
-        background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+        background-color: rgba(0, 0, 0, 0.7); 
         margin: 0;
         transition: bottom 0.2s; /* Smoother slide up animation */
         will-change: bottom; /* Optimize for animation */
@@ -159,7 +157,7 @@
         background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
         margin: 0;
         transition: top 0.2s; /* Smoother slide up animation */
-        will-change: top; /* Optimize for animation */
+        will-change: top;
     }
 
     &:hover h3 {
@@ -256,8 +254,8 @@
     will-change: transform;
 
     &:hover {
-        transform: scale(1.15); /* Even stronger pop */
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7); /* Deeper shadow */
+        transform: scale(1.15); 
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7); 
         z-index: 1;
     }
 
@@ -292,13 +290,12 @@
         padding: 5px;
         font-size: 1em;
         text-align: center;
-        position: absolute; /* Position rating over image */
+        position: absolute; 
         top: 0;
         left: 0;
         width: 100%;
-        background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-        margin: 0;
-        transition: top 0.2s; /* Smoother slide up animation */
+        background-color: rgba(0, 0, 0, 0.7); 
+        transition: top 0.2s; 
         will-change: top;
     }
 
@@ -307,7 +304,7 @@
     }
 
     &:hover p {
-        top: 30px; /* Move rating higher on hover */
+        top: 30px; 
     }
 
     .favorite-button {
@@ -341,13 +338,10 @@
     }
 }
 
-/* Netflix Sans Font */
-@font-face {
-    font-family: 'Netflix Sans';
-    src: url('https://uifaces.co/assets/google-fonts/netflix-sans/NetflixSans-Regular.ttf') format('truetype'); /* Replace with your font file path */
-    font-weight: normal;
-    font-style: normal;
+body {
+    font-family: 'Roboto', sans-serif;
 }
+
 
 /* Apply dark theme styles */
 .dark .home-page {
@@ -360,3 +354,4 @@
     background-color: #fff;     /* Light background */
     color: #141414;           /* Dark text */
   }
+  

@@ -6,10 +6,10 @@ import { ThemeContext } from '../contexts/ThemeContext'; // Import ThemeContext
 import { FaMoon, FaSun } from 'react-icons/fa'; // Import Icons
 
 function Navbar() {
-    const { theme, toggleTheme } = useContext(ThemeContext); // Access theme and toggle
+    const { theme, toggleTheme } = useContext(ThemeContext); 
 
     return (
-        <nav className="navbar"> {/* REMOVED Theme-Specific Classes */}
+        <nav className="navbar"> 
             <div className="navbar-brand">
                 <Link to="/">
                     <img src={netflixLogo} alt="Netflix" className="logo" />

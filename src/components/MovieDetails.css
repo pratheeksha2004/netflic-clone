@@ -14,7 +14,7 @@
 }
 
 .movie-poster {
-  width: 300px; /* Adjust the width as needed */
+  width: 300px;
   margin-bottom: 20px;
 }
 
@@ -22,7 +22,7 @@
   width: 100%;
   height: auto;
   border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add a subtle shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
 }
 
 .movie-info {
@@ -35,7 +35,7 @@
 
 .movie-info strong {
   font-weight: bold;
-  color: #e50914; /* Netflix red color for emphasis */
+  color: #e50914; 
 }
 
 .ratings {
@@ -68,7 +68,7 @@
   }
 
   &:focus {
-      outline: none; /* Remove default focus outline */
-      box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.5); /* Add a custom focus style */
+      outline: none; 
+      box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.5); /
   }
 }

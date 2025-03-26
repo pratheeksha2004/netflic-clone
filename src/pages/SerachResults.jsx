@@ -2,10 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import apiService from '../services/apiService';
-import './SearchResults.css'; // Create SearchResults.css for styling
+import './SearchResults.css'; 
 
 function SearchResults() {
-  const { searchTerm } = useParams(); // Get the search term from the URL
+  const { searchTerm } = useParams(); 
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -27,7 +27,7 @@ function SearchResults() {
     }
 
     fetchData();
-  }, [searchTerm]); // Re-fetch when the search term changes
+  }, [searchTerm]); 
 
   if (loading) {
     return <p>Loading search results...</p>;
@@ -47,7 +47,7 @@ function SearchResults() {
       <div className="movie-grid">
         {movies.map(movie => (
           <div key={movie.imdbID} className="movie-card">
-            <Link to={`/movie/${movie.imdbID}`}> {/* Link to Movie Details Page */}
+            <Link to={`/movie/${movie.imdbID}`}> 
               <img src={movie.Poster} alt={movie.Title} />
               <h3>{movie.Title}</h3>
               <p>{movie.Year}</p>

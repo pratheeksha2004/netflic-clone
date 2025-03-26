@@ -1,7 +1,21 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback, memo } from 'react';
 import { Link } from 'react-router-dom';
 import './Favorites.css';
 import { ThemeContext } from '../contexts/ThemeContext';
+
+// Create the Favorite Card
+const FavoriteCard = memo(({ movie, theme, removeFromFavorites }) => (
+    <div className={`favorite-card ${theme === 'dark' ? 'dark-mode' : 'light-mode'}`}>
+        <Link to={`/movie/${movie.imdbID}`}>
+            <img src={movie.Poster} alt={movie.Title} loading="lazy" />
+            <h3>{movie.Title}</h3>
+            <p>{movie.Year}</p>
+        </Link>
+        <button className="remove-button" onClick={() => removeFromFavorites(movie)}>
+            Remove
+        </button>
+    </div>
+));
 
 function Favorites() {
     const { theme } = useContext(ThemeContext);
@@ -15,10 +29,9 @@ function Favorites() {
         localStorage.setItem('favorites', JSON.stringify(favorites));
     }, [favorites]);
 
-    const removeFromFavorites = (movie) => {
-        const updatedFavorites = favorites.filter((favMovie) => favMovie.imdbID !== movie.imdbID);
-        setFavorites(updatedFavorites);
-    };
+    const removeFromFavorites = useCallback((movie) => {
+        setFavorites(prevFavorites => prevFavorites.filter((favMovie) => favMovie.imdbID !== movie.imdbID));
+    }, []);
 
     return (
         <div className={`favorites-page ${theme === 'dark' ? 'dark-mode' : 'light-mode'}`}>
@@ -28,16 +41,12 @@ function Favorites() {
             ) : (
                 <div className="favorites-list">
                     {favorites.map((movie) => (
-                        <div key={movie.imdbID} className={`favorite-card ${theme === 'dark' ? 'dark-mode' : 'light-mode'}`}>
-                            <Link to={`/movie/${movie.imdbID}`}>
-                                <img src={movie.Poster} alt={movie.Title} />
-                                <h3>{movie.Title}</h3>
-                                <p>{movie.Year}</p>
-                            </Link>
-                            <button className="remove-button" onClick={() => removeFromFavorites(movie)}>
-                                Remove
-                            </button>
-                        </div>
+                        <FavoriteCard
+                            key={movie.imdbID}
+                            movie={movie}
+                            theme={theme}
+                            removeFromFavorites={removeFromFavorites}
+                        />
                     ))}
                 </div>
             )}

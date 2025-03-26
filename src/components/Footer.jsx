@@ -33,7 +33,7 @@ function Footer() {
             <div className="language-selector">
                 <select>
                     <option>English</option>
-                    {/* Add other language options here */}
+                    <option>Hindi</option>
                 </select>
             </div>
             <div className="footer-bottom">

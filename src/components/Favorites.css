@@ -1,6 +1,5 @@
 /* Favorites.css */
 
-/* Base styles (apply to both themes) */
 .favorites-page {
     padding: 20px;
 }
@@ -62,7 +61,6 @@
     margin: 10px;
 }
 
-/* Dark theme styles */
 .favorites-page.dark-mode {
     background-color: #141414;
     color: #fff;
@@ -95,8 +93,6 @@
 }
 
 
-
-/* Light theme styles */
 .favorites-page.light-mode {
     background-color: #f9f9f9;
     color: #333;
@@ -105,7 +101,7 @@
 .favorite-card.light-mode {
     background-color: #fff;
     color: #333;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Example shadow for light mode */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
 .favorite-card.light-mode a {
@@ -113,14 +109,14 @@
 }
 
 .favorite-card.light-mode img {
-    border-bottom: 1px solid #eee; /* Lighter border for light mode */
+    border-bottom: 1px solid #eee; 
 }
 
 .favorite-card.light-mode p {
     color: #666;
 }
 .remove-button {
-    background-color: #dc3545; /* Bootstrap danger red */
+    background-color: #dc3545; 
     color: #fff;
 }
 

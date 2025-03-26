@@ -1,6 +1,6 @@
-/* src/components/SplashScreen.css */
+/* SplashScreen.css */
 
-/* Fullscreen overlay */
+
 .splash-screen {
   position: fixed;
   top: 0;
@@ -15,7 +15,7 @@
   overflow: hidden;
 }
 
-/* Animate background to dark red */
+
 .splash-screen::before {
   content: '';
   position: absolute;

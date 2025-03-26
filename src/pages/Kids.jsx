@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Kids.css';
-import kidsData from './kidsdata'; // Corrected import path
+import kidsData from './kidsdata'; 
 import { ThemeContext } from '../contexts/ThemeContext';
 
 function Kids() {

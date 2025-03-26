@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import apiService from '../service/apiService';
-import './MovieDetails.css'; // Import CSS for styling (create this file)
-import LoadingSpinner from '../components/LoadingSpinner'; // Import LoadingSpinner
+import './MovieDetails.css'; 
+import LoadingSpinner from '../components/LoadingSpinner'; 
 
 function MovieDetails() {
     const { imdbID } = useParams();
@@ -35,17 +35,17 @@ function MovieDetails() {
         async function fetchData() {
             try {
                 setLoading(true);
-                setError(null); // Clear any previous errors
-                console.log("Fetching movie details for:", imdbID); // Log imdbID
+                setError(null); 
+                console.log("Fetching movie details for:", imdbID); 
 
                 const data = await apiService.getMovieDetails(imdbID);
-                console.log("Movie details data:", data); // Log the movie details
+                console.log("Movie details data:", data); 
                 console.log(JSON.stringify(data));
 
                 setMovie(data);
             } catch (err) {
                 console.error("FetchData Error:", err);
-                // Specific error handling for different error types
+              
                 if (err.message === "Failed to parse movie details. The data may be corrupted.") {
                     setError("Sorry, the movie details are currently unavailable due to corrupted data. Please try another movie.");
                     console.log("Failed to parse details due to corrupted error");
@@ -68,7 +68,7 @@ function MovieDetails() {
     }, [imdbID]);
 
     if (loading) {
-        return <LoadingSpinner />; // Display the spinner while loading
+        return <LoadingSpinner />; 
     }
 
     if (error) {
@@ -94,7 +94,7 @@ function MovieDetails() {
                     <p><strong>Plot:</strong> {movie.Plot}</p>
                     <p><strong>Language:</strong> {movie.Language}</p>
                     <p><strong>Awards:</strong> {movie.Awards}</p>
-                    {/* Display Ratings */}
+                  
                     {movie.Ratings && movie.Ratings.length > 0 && (
                         <div className="ratings">
                             <strong>Ratings:</strong>

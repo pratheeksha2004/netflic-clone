@@ -25,8 +25,8 @@
 }
 
 .logo {
-  width: 120px; /* Increased width */
-  height: auto;  /* Maintain aspect ratio */
+  width: 140px; 
+  height: auto;  
 }
 
 .navbar-links {

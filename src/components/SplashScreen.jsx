@@ -1,24 +1,24 @@
-// src/components/SplashScreen.jsx
+// SplashScreen.jsx
 import React, { useState, useEffect } from 'react';
 import './SplashScreen.css';
 import netflixNLogo from '../assets/N_logo.jpg'; // Import N logo
 import netflixLogo from '../assets/logo.jpg'; // Import full logo
 
 function SplashScreen({ onAnimationComplete }) {
-  const [stage, setStage] = useState('N'); // 'N' | 'Full' | 'Complete'
+  const [stage, setStage] = useState('N'); 
 
   useEffect(() => {
     let timer1, timer2;
 
     if (stage === 'N') {
       timer1 = setTimeout(() => {
-        setStage('Full'); // Transition to full logo after 1.5 seconds
+        setStage('Full'); 
       }, 1500);
     } else if (stage === 'Full') {
       timer2 = setTimeout(() => {
-        setStage('Complete'); // Signal completion after full logo animation
+        setStage('Complete'); 
         onAnimationComplete();
-      }, 3000); // Adjust timing to match animation
+      }, 3000); // we Adjust timing to match animation
     }
 
     return () => {
