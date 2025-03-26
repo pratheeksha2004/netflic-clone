@@ -1,8 +1,68 @@
 # Netflix Clone Project (Frontend)
+### 1. Splash Screen
 
-[![Project Screenshot](link-to-your-screenshot.png)](link-to-your-live-site)
+The initial landing page provides an introduction to the application.
+![Splash Screen](src/assets/Results-ScreenShots/SplashScreen.png)
 
-A visually engaging movie streaming platform mimicking the Netflix experience.
+### 2. Hero Banner (Homepage)
+
+The Hero section features a prominent movie or show to grab the user's attention upon landing on the homepage.
+![Hero Banner](src/assets/Results-ScreenShots/Herobanner.png)
+
+### 3. Trending Movies (Homepage)
+
+A selection of trending movies available on the platform is showcased on the homepage.
+![Trending Movies](src/assets/Results-ScreenShots/TrendingMovie(Home).png)
+
+### 4. New Releases (Homepage)
+
+Discover newly released content on the platform through this section.
+![New Releases](src/assets/Results-ScreenShots/NewRelease(Home).png)
+
+### 5. Search & Filter
+
+The search bar and genre dropdown allow users to quickly find specific movies or browse by category.
+![Search and Filter](src/assets/Results-ScreenShots/Search&filter.png)
+
+### 5.1. Search & Filter
+
+Genre dropdown allow users to quickly find specific movies.
+![Search and Filter](src/assets/Results-ScreenShots/Gener(Dropdown).png)
+
+### 6. Pagination
+
+Navigation through multiple pages of content is facilitated using pagination.
+![Pagination](src/assets/Results-ScreenShots/Pagination.png)
+
+### 7. Movie Details
+
+A dedicated page provides in-depth information about a selected movie, including its description, cast, and more.
+![Movie Details](src/assets/Results-ScreenShots/MovieDetails.png)
+
+### 8. Add to Favorite Button
+
+Users can add movies to their personal favorites list using this button.
+![Add to Favorite](src/assets/Results-ScreenShots/AddtofavoriteButton.png)
+
+### 9. Favorites Page
+
+A view of the dedicated favorites page, displaying the collected movies.
+![Favorites Page](src/assets/Results-ScreenShots/Favorites.png)
+
+### 10. Kids Section
+
+A dedicated section features content suitable for children.
+![Kids Section](src/assets/Results-ScreenShots/Kids.png)
+
+### 11. TV Shows Section
+
+A dedicated section features tv shows.
+![TV Show section](src/assets/Results-ScreenShots/TVShows.png)
+
+### 12. Light Mode Interface
+
+The application offers a light mode interface for user preference.
+![Light Mode](src/assets/Results-ScreenShots/LightMode.png)
 
 ## Project Overview
 
@@ -49,7 +109,7 @@ Deployment: Cloud Hosting: The project is deployed on Vercel (or Netlify). Open 
 
 *   Node.js (version >= 16)
 *   npm (or yarn)
-
+*   Bootstrap
 ## Setup & Installation
 
 1.  Clone the repository:
@@ -170,15 +230,15 @@ Authentication via API key.
 Screenshots
 Mobile
 A movie streaming app on a phone
-![alt text](path-to-mobile-screenshot.png)
+![alt text](src/assets/Results-ScreenShots/Mobile(View).png)
 
 Tablet
 Screenshot of app running on tablet
-![alt text](path-to-tablet-screenshot.png)
+![alt text](src/assets/Results-ScreenShots/Tablet(View).png)
 
 Desktop
 Screen shot of app running on desktop
-![alt text](path-to-desktop-screenshot.png)
+![alt text](src/assets/Results-ScreenShots/Desktop(View).png)
 
 UI/UX Design Principles
 Minimalist design
