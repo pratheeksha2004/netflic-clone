@@ -257,8 +257,11 @@ Implemented API error handling
 
 Displayed user-friendly messages
 
-Deployment Strategy
-Deployed to Vercel for instant availability.
+## Deployment Strategy
+
+This project is deployed on [Vercel](https://vercel.com/) for instant availability. You can view the live application at:
+
+[Updated Netflix Clone](https://updated-netflix-clone-rau7b1tfh-pratheeksha-k-ns-projects.vercel.app/)
 
 ## Performance Analysis (Lighthouse)
 
