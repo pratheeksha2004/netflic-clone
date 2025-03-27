@@ -267,6 +267,16 @@ This project is deployed on [Vercel](https://vercel.com/) for instant availabili
 
 [Updated Netflix Clone](https://updated-netflix-clone-rau7b1tfh-pratheeksha-k-ns-projects.vercel.app/)
 
+## Performance Considerations
+
+This application was designed with performance in mind.  I have employed the following strategies to ensure a fast and responsive user experience:
+
+*   **React.memo for Memoization:** I utilize `React.memo` to optimize the rendering of functional components.  By memoizing components, It prevents unnecessary re-renders when the input props remain unchanged.  This significantly reduces the workload on React, especially for computationally intensive components or components that are frequently re-rendered.
+
+*   **Lazy Loading with `React.lazy` and `Suspense`:**  To minimize the initial load time, I implement lazy loading for images, components, and modules that are not immediately required.  This is achieved using `React.lazy` in conjunction with `Suspense` to display fallback content while the lazy-loaded components are being fetched.  This improves perceived performance and reduces the time to interactive.
+
+*   **Code Splitting:** I leverage code splitting to divide the application into smaller, more manageable bundles. This allows the browser to download only the code that is necessary for the current route or feature, reducing the initial download size and improving load times.
+
 ## Performance Analysis (Lighthouse)
 
 This section summarizes the performance analysis of the application using Google Lighthouse. The scores and metrics provide insights into areas for potential optimization.
