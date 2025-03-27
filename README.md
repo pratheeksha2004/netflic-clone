@@ -215,23 +215,41 @@ Variables and functions: camelCase (e.g., fetchData, searchTerm)
 
 CSS classes: kebab-case (e.g., movie-card, search-bar)
 
-Usability & Best Practices
-Semantic HTML elements
+## API Documentation
 
-Optimized images
+This application uses the OMDb API (https://www.omdbapi.com/) to fetch movie and TV show data.
 
-Lazy loading,memoization
+**Important:** Use environment variables for your API key.
 
-Accessibility (WCAG)
+### Endpoints:
 
-API Reference
-Data was consumed via the OMDB API.
+1.  **`getMovieDetails(id)`:** Gets movie/TV show details by IMDb ID.
+    *   `id` (string): IMDb ID (e.g., "tt0816692").
+    *   Returns: (Promise<object>) Movie/TV show details.
 
-Endpoint: http://www.omdbapi.com/
+2.  **`searchMovies(searchTerm, page = 1)`:** Searches for movies.
+    *   `searchTerm` (string): Search term (e.g., "Avengers").
+    *   `page` (number, optional): Page number (default: 1).
+    *   Returns: (Promise<object>) Search results (see OMDb API).
 
-Authentication via API key.
+3.  **`searchTVShows(searchTerm, page = 1)`:** Searches for TV shows.
+    *   `searchTerm` (string): Search term (e.g., "Breaking Bad").
+    *   `page` (number, optional): Page number (default: 1).
+    *   Returns: (Promise<object>) Search results (see OMDb API).
 
-Screenshots
+4.  **`getTrendingMovies()`:** Gets trending movies (hardcoded list for now).
+    *   Returns: (Promise<array>) Array of movie details.
+
+5.  **`getNewReleases()`:** Gets new movie releases (simulated with current year search).
+    *   Returns: (Promise<array>) Array of new release movies.
+
+**Notes:**
+
+*   See the OMDb API documentation (https://www.omdbapi.com/) for data structures.
+*   Handle API errors and rate limits.
+*   `getTrendingMovies` and `getNewReleases` are currently using simulated data.
+
+Responsiveness Screenshots for different Screens
 Mobile
 A movie streaming app on a phone
 ![alt text](src/assets/Results-ScreenShots/Mobile(View).png)
