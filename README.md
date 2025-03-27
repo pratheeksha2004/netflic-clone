@@ -368,6 +368,12 @@ This project is deployed on [Vercel](https://vercel.com/) for instant availabili
 
 [Updated Netflix Clone](https://updated-netflix-clone-rau7b1tfh-pratheeksha-k-ns-projects.vercel.app/)
 
+The application is also deployed on Netlify and can be accessed at:
+
+[https://pra-netfli.netlify.app/](https://pra-netfli.netlify.app/)
+
+This is a live version of the project, showcasing the implemented features and functionality.
+
 ## Performance Considerations
 
 This application was designed with performance in mind.  I have employed the following strategies to ensure a fast and responsive user experience:
