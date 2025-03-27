@@ -393,26 +393,19 @@ These values are estimated and may vary.  The performance score is calculated di
 
 | Category          | Score |
 |-------------------|-------|
-| Performance       | 99    |
+| Performance       | 97    |
 | Accessibility     | 100   |
 | Best Practices    | 100    |
-| SEO               | 54   |
-
-**Performance Breakdown:**
-
-| Metric                     | Value |
-|-----------------------------|-------|
-| First Contentful Paint (FCP) | 0.4 s    |
-| Largest Contentful Paint (LCP)| 0.5 s   |
-| Total Blocking Time (TBT)    | 0 ms   |
-| Cumulative Layout Shift (CLS)| 0   |
-| Speed Index (SI)             | 1.4 s    |
+| SEO               | 91   |
 
 **Score Ranges:**
 
 *   **0–49:**  Poor
 *   **50–89:** Needs Improvement
 *   **90–100:** Good
+
+![Performance report](src/assets/Performance/report.png)
+
 
 ---
 
