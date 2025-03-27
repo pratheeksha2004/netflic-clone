@@ -217,37 +217,122 @@ CSS classes: kebab-case (e.g., movie-card, search-bar)
 
 ## API Documentation
 
-This application uses the OMDb API (https://www.omdbapi.com/) to fetch movie and TV show data.
+This application uses the OMDb API (https://www.omdbapi.com/) to fetch movie and TV show data.  The following methods are available in the `apiService`:
 
-**Important:** Use environment variables for your API key.
+**Note:**  Replace `8e88baf0` with your actual OMDb API key. **Please use it responsibly and respect its usage limits.** Avoid making excessive requests or any actions that could harm the service.
 
-### Endpoints:
+### 1. `getMovieDetails(id)`
 
-1.  **`getMovieDetails(id)`:** Gets movie/TV show details by IMDb ID.
-    *   `id` (string): IMDb ID (e.g., "tt0816692").
-    *   Returns: (Promise<object>) Movie/TV show details.
+*   **Description:** Retrieves detailed information about a specific movie or TV show by its IMDb ID.
+*   **Parameters:**
+    *   `id` (string): The IMDb ID of the movie or TV show (e.g., `"tt0816692"` for Interstellar).
+*   **Returns:**
+    *   (Promise<object>): A promise that resolves to an object containing the movie or TV show details.  The object structure is defined by the OMDb API.
+*   **Example:**
 
-2.  **`searchMovies(searchTerm, page = 1)`:** Searches for movies.
-    *   `searchTerm` (string): Search term (e.g., "Avengers").
-    *   `page` (number, optional): Page number (default: 1).
-    *   Returns: (Promise<object>) Search results (see OMDb API).
+    ```javascript
+    apiService.getMovieDetails('tt0816692')
+      .then(data => {
+        console.log(data); // Output: Movie details for Interstellar
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    ```
 
-3.  **`searchTVShows(searchTerm, page = 1)`:** Searches for TV shows.
-    *   `searchTerm` (string): Search term (e.g., "Breaking Bad").
-    *   `page` (number, optional): Page number (default: 1).
-    *   Returns: (Promise<object>) Search results (see OMDb API).
+### 2. `searchMovies(searchTerm, page = 1)`
 
-4.  **`getTrendingMovies()`:** Gets trending movies (hardcoded list for now).
-    *   Returns: (Promise<array>) Array of movie details.
+*   **Description:** Searches for movies based on a search term.
+*   **Parameters:**
+    *   `searchTerm` (string): The search term (e.g., `"Avengers"`).
+    *   `page` (number, optional): The page number of the results (default: 1).
+*   **Returns:**
+    *   (Promise<object>): A promise that resolves to an object containing the search results. The object structure from OMDb API is followed.
+        *   `Search` (array): An array of movie objects matching the search term. Each movie object contains:
+            *   `Title` (string): The title of the movie.
+            *   `Year` (string): The year the movie was released.
+            *   `imdbID` (string): The IMDb ID of the movie.
+            *   `Type` (string): The type of result (e.g., `"movie"`).
+            *   `Poster` (string): URL of the movie poster.
+        *   `totalResults` (string): The total number of results for the search.
+        *   `Response` (string): `"True"` if the request was successful, `"False"` otherwise.
+        *   `Error` (string, optional): If `Response` is `"False"`, this field will contain the error message.
+*   **Example:**
 
-5.  **`getNewReleases()`:** Gets new movie releases (simulated with current year search).
-    *   Returns: (Promise<array>) Array of new release movies.
+    ```javascript
+    apiService.searchMovies('Avengers', 2)
+      .then(data => {
+        console.log(data.Search); // Output: Array of movies on page 2
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    ```
 
-**Notes:**
+### 3. `searchTVShows(searchTerm, page = 1)`
 
-*   See the OMDb API documentation (https://www.omdbapi.com/) for data structures.
-*   Handle API errors and rate limits.
-*   `getTrendingMovies` and `getNewReleases` are currently using simulated data.
+*   **Description:** Searches for TV shows based on a search term.
+*   **Parameters:**
+    *   `searchTerm` (string): The search term (e.g., `"Breaking Bad"`).
+    *   `page` (number, optional): The page number of the results (default: 1).
+*   **Returns:**
+    *   (Promise<object>): A promise that resolves to an object containing the search results (same structure as `searchMovies`, but with `Type` being `"series"`).
+*   **Example:**
+
+    ```javascript
+    apiService.searchTVShows('Breaking Bad')
+      .then(data => {
+        console.log(data.Search); // Output: Array of TV shows
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    ```
+
+### 4. `getTrendingMovies()`
+
+*   **Description:** Retrieves a list of trending movies.  *Note: This currently uses a hardcoded list of IMDb IDs for demonstration purposes.*
+*   **Parameters:** None
+*   **Returns:**
+    *   (Promise<array>): A promise that resolves to an array of movie objects (same structure as `getMovieDetails`).
+*   **Example:**
+
+    ```javascript
+    apiService.getTrendingMovies()
+      .then(movies => {
+        console.log(movies); // Output: Array of trending movie details
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    ```
+
+### 5. `getNewReleases()`
+
+*   **Description:** Retrieves a list of new movie releases. *Note: This currently simulates new releases by searching for movies from the current year and limiting the results.*
+*   **Parameters:** None
+*   **Returns:**
+    *   (Promise<array>): A promise that resolves to an array of movie objects (same structure as the `Search` array from `searchMovies`).
+*   **Example:**
+
+    ```javascript
+    apiService.getNewReleases()
+      .then(newReleases => {
+        console.log(newReleases); // Output: Array of new release movies
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    ```
+
+---
+
+**Important Considerations:**
+
+*   **OMDb API Rate Limits:**  Be aware of the OMDb API's rate limits and implement appropriate error handling and caching to avoid exceeding them.
+*   **Data Structure:** Refer to the OMDb API documentation for the exact structure of the data returned by each endpoint.  The structures described above are based on your code and may need adjustment.
+*   **Error Handling:** Include error handling in your code to gracefully handle API errors. The provided code includes basic error handling with `try...catch` blocks.
+*   **Hardcoded Data:** The `getTrendingMovies` and `getNewReleases` functions use hardcoded data or simulations. Replace these with a real implementation if you want to fetch actual trending or new release data.
 
 Responsiveness Screenshots for different Screens
 Mobile
