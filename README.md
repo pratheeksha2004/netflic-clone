@@ -387,18 +387,32 @@ This application was designed with performance in mind.  I have employed the fol
 ## Performance Analysis (Lighthouse)
 
 This section summarizes the performance analysis of the application using Google Lighthouse. The scores and metrics provide insights into areas for potential optimization.
+These values are estimated and may vary.  The performance score is calculated directly from these metrics.
 
-### Scores
+**Scores:**
 
-*   **Performance:** 68/100 (Medium)
-*   **Accessibility:** 100/100
-*   **Best Practices:** 100/100
-*   **SEO:** 83/100
+| Category          | Score |
+|-------------------|-------|
+| Performance       | 99    |
+| Accessibility     | 100   |
+| Best Practices    | 100    |
+| SEO               | 54   |
 
-### Key Metrics
+**Performance Breakdown:**
 
-*   **First Contentful Paint (FCP):** 1.9 s
-*   **Largest Contentful Paint (LCP):** 3.5 s
-*   **Total Blocking Time (TBT):** 0 ms
-*   **Cumulative Layout Shift (CLS):** 0 ms
-*   **Speed Index:** 2.5 s
+| Metric                     | Value |
+|-----------------------------|-------|
+| First Contentful Paint (FCP) | 0.4 s    |
+| Largest Contentful Paint (LCP)| 0.5 s   |
+| Total Blocking Time (TBT)    | 0 ms   |
+| Cumulative Layout Shift (CLS)| 0   |
+| Speed Index (SI)             | 1.4 s    |
+
+**Score Ranges:**
+
+*   **0–49:**  Poor
+*   **50–89:** Needs Improvement
+*   **90–100:** Good
+
+---
+
