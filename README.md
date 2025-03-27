@@ -326,25 +326,23 @@ This application uses the OMDb API (https://www.omdbapi.com/) to fetch movie and
     ```
 
 ---
+  
 
-**Important Considerations:**
+## Responsiveness Screenshots for different Screens
 
-*   **OMDb API Rate Limits:**  Be aware of the OMDb API's rate limits and implement appropriate error handling and caching to avoid exceeding them.
-*   **Data Structure:** Refer to the OMDb API documentation for the exact structure of the data returned by each endpoint.  The structures described above are based on your code and may need adjustment.
-*   **Error Handling:** Include error handling in your code to gracefully handle API errors. The provided code includes basic error handling with `try...catch` blocks.
-*   **Hardcoded Data:** The `getTrendingMovies` and `getNewReleases` functions use hardcoded data or simulations. Replace these with a real implementation if you want to fetch actual trending or new release data.
-
-Responsiveness Screenshots for different Screens
 Mobile
 A movie streaming app on a phone
+
 ![alt text](src/assets/Results-ScreenShots/Mobile(View).png)
 
 Tablet
 Screenshot of app running on tablet
+
 ![alt text](src/assets/Results-ScreenShots/Tablet(View).png)
 
 Desktop
 Screen shot of app running on desktop
+
 ![alt text](src/assets/Results-ScreenShots/Desktop(View).png)
 
 UI/UX Design Principles
