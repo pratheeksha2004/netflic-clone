@@ -1,8 +1,72 @@
 # Netflix Clone Project (Frontend)
 
-[![Project Screenshot](link-to-your-screenshot.png)](link-to-your-live-site)
+## Visual Showcase
 
-A visually engaging movie streaming platform mimicking the Netflix experience.
+This section provides a visual tour of the application, highlighting key features and design elements in a user-flow-centric order.
+### 1. Splash Screen
+
+The initial landing page provides an introduction to the application.
+![Splash Screen](src/assets/Results-ScreenShots/SplashScreen.png)
+
+### 2. Hero Banner (Homepage)
+
+The Hero section features a prominent movie or show to grab the user's attention upon landing on the homepage.
+![Hero Banner](src/assets/Results-ScreenShots/Herobanner.png)
+
+### 3. Trending Movies (Homepage)
+
+A selection of trending movies available on the platform is showcased on the homepage.
+![Trending Movies](src/assets/Results-ScreenShots/TrendingMovie(Home).png)
+
+### 4. New Releases (Homepage)
+
+Discover newly released content on the platform through this section.
+![New Releases](src/assets/Results-ScreenShots/NewRelease(Home).png)
+
+### 5. Search & Filter
+
+The search bar and genre dropdown allow users to quickly find specific movies or browse by category.
+![Search and Filter](src/assets/Results-ScreenShots/Search&filter.png)
+
+### 5.1. Search & Filter
+
+Genre dropdown allow users to quickly find specific movies.
+![Search and Filter](src/assets/Results-ScreenShots/Gener(Dropdown).png)
+
+### 6. Pagination
+
+Navigation through multiple pages of content is facilitated using pagination.
+![Pagination](src/assets/Results-ScreenShots/Pagination.png)
+
+### 7. Movie Details
+
+A dedicated page provides in-depth information about a selected movie, including its description, cast, and more.
+![Movie Details](src/assets/Results-ScreenShots/MovieDetails.png)
+
+### 8. Add to Favorite Button
+
+Users can add movies to their personal favorites list using this button.
+![Add to Favorite](src/assets/Results-ScreenShots/AddtofavoriteButton.png)
+
+### 9. Favorites Page
+
+A view of the dedicated favorites page, displaying the collected movies.
+![Favorites Page](src/assets/Results-ScreenShots/Favorites.png)
+
+### 10. Kids Section
+
+A dedicated section features content suitable for children.
+![Kids Section](src/assets/Results-ScreenShots/Kids.png)
+
+### 11. TV Shows Section
+
+A dedicated section features tv shows.
+![TV Show section](src/assets/Results-ScreenShots/TVShows.png)
+
+### 12. Light Mode Interface
+
+The application offers a light mode interface for user preference.
+![Light Mode](src/assets/Results-ScreenShots/LightMode.png)
 
 ## Project Overview
 
@@ -49,7 +113,7 @@ Deployment: Cloud Hosting: The project is deployed on Vercel (or Netlify). Open 
 
 *   Node.js (version >= 16)
 *   npm (or yarn)
-
+*   Bootstrap
 ## Setup & Installation
 
 1.  Clone the repository:
@@ -151,34 +215,135 @@ Variables and functions: camelCase (e.g., fetchData, searchTerm)
 
 CSS classes: kebab-case (e.g., movie-card, search-bar)
 
-Usability & Best Practices
-Semantic HTML elements
+## API Documentation
 
-Optimized images
+This application uses the OMDb API (https://www.omdbapi.com/) to fetch movie and TV show data.  The following methods are available in the `apiService`:
 
-Lazy loading,memoization
+**Note:**  Replace `8e88baf0` with your actual OMDb API key. **Please use it responsibly and respect its usage limits.** Avoid making excessive requests or any actions that could harm the service.
 
-Accessibility (WCAG)
+### 1. `getMovieDetails(id)`
 
-API Reference
-Data was consumed via the OMDB API.
+*   **Description:** Retrieves detailed information about a specific movie or TV show by its IMDb ID.
+*   **Parameters:**
+    *   `id` (string): The IMDb ID of the movie or TV show (e.g., `"tt0816692"` for Interstellar).
+*   **Returns:**
+    *   (Promise<object>): A promise that resolves to an object containing the movie or TV show details.  The object structure is defined by the OMDb API.
+*   **Example:**
 
-Endpoint: http://www.omdbapi.com/
+    ```javascript
+    apiService.getMovieDetails('tt0816692')
+      .then(data => {
+        console.log(data); // Output: Movie details for Interstellar
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    ```
 
-Authentication via API key.
+### 2. `searchMovies(searchTerm, page = 1)`
 
-Screenshots
+*   **Description:** Searches for movies based on a search term.
+*   **Parameters:**
+    *   `searchTerm` (string): The search term (e.g., `"Avengers"`).
+    *   `page` (number, optional): The page number of the results (default: 1).
+*   **Returns:**
+    *   (Promise<object>): A promise that resolves to an object containing the search results. The object structure from OMDb API is followed.
+        *   `Search` (array): An array of movie objects matching the search term. Each movie object contains:
+            *   `Title` (string): The title of the movie.
+            *   `Year` (string): The year the movie was released.
+            *   `imdbID` (string): The IMDb ID of the movie.
+            *   `Type` (string): The type of result (e.g., `"movie"`).
+            *   `Poster` (string): URL of the movie poster.
+        *   `totalResults` (string): The total number of results for the search.
+        *   `Response` (string): `"True"` if the request was successful, `"False"` otherwise.
+        *   `Error` (string, optional): If `Response` is `"False"`, this field will contain the error message.
+*   **Example:**
+
+    ```javascript
+    apiService.searchMovies('Avengers', 2)
+      .then(data => {
+        console.log(data.Search); // Output: Array of movies on page 2
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    ```
+
+### 3. `searchTVShows(searchTerm, page = 1)`
+
+*   **Description:** Searches for TV shows based on a search term.
+*   **Parameters:**
+    *   `searchTerm` (string): The search term (e.g., `"Breaking Bad"`).
+    *   `page` (number, optional): The page number of the results (default: 1).
+*   **Returns:**
+    *   (Promise<object>): A promise that resolves to an object containing the search results (same structure as `searchMovies`, but with `Type` being `"series"`).
+*   **Example:**
+
+    ```javascript
+    apiService.searchTVShows('Breaking Bad')
+      .then(data => {
+        console.log(data.Search); // Output: Array of TV shows
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    ```
+
+### 4. `getTrendingMovies()`
+
+*   **Description:** Retrieves a list of trending movies.  *Note: This currently uses a hardcoded list of IMDb IDs for demonstration purposes.*
+*   **Parameters:** None
+*   **Returns:**
+    *   (Promise<array>): A promise that resolves to an array of movie objects (same structure as `getMovieDetails`).
+*   **Example:**
+
+    ```javascript
+    apiService.getTrendingMovies()
+      .then(movies => {
+        console.log(movies); // Output: Array of trending movie details
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    ```
+
+### 5. `getNewReleases()`
+
+*   **Description:** Retrieves a list of new movie releases. *Note: This currently simulates new releases by searching for movies from the current year and limiting the results.*
+*   **Parameters:** None
+*   **Returns:**
+    *   (Promise<array>): A promise that resolves to an array of movie objects (same structure as the `Search` array from `searchMovies`).
+*   **Example:**
+
+    ```javascript
+    apiService.getNewReleases()
+      .then(newReleases => {
+        console.log(newReleases); // Output: Array of new release movies
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    ```
+
+---
+  
+
+## Responsiveness Screenshots for different Screens
+
 Mobile
 A movie streaming app on a phone
-![alt text](path-to-mobile-screenshot.png)
+
+![alt text](src/assets/Results-ScreenShots/Mobile(View).png)
 
 Tablet
 Screenshot of app running on tablet
-![alt text](path-to-tablet-screenshot.png)
+
+![alt text](src/assets/Results-ScreenShots/Tablet(View).png)
 
 Desktop
 Screen shot of app running on desktop
-![alt text](path-to-desktop-screenshot.png)
+
+![alt text](src/assets/Results-ScreenShots/Desktop(View).png)
 
 UI/UX Design Principles
 Minimalist design
@@ -197,24 +362,57 @@ Implemented API error handling
 
 Displayed user-friendly messages
 
-Deployment Strategy
-Deployed to Vercel for instant availability.
+## Deployment Strategy
+
+This project is deployed on [Vercel](https://vercel.com/) for instant availability. You can view the live application at:
+
+[Updated Netflix Clone](https://updated-netflix-clone-rau7b1tfh-pratheeksha-k-ns-projects.vercel.app/)
+
+The application is also deployed on Netlify and can be accessed at:
+
+[https://pra-netfli.netlify.app/](https://pra-netfli.netlify.app/)
+
+This is a live version of the project, showcasing the implemented features and functionality.
+
+## Performance Considerations
+
+This application was designed with performance in mind.  I have employed the following strategies to ensure a fast and responsive user experience:
+
+*   **React.memo for Memoization:** I utilize `React.memo` to optimize the rendering of functional components.  By memoizing components, It prevents unnecessary re-renders when the input props remain unchanged.  This significantly reduces the workload on React, especially for computationally intensive components or components that are frequently re-rendered.
+
+*   **Lazy Loading with `React.lazy` and `Suspense`:**  To minimize the initial load time, I implement lazy loading for images, components, and modules that are not immediately required.  This is achieved using `React.lazy` in conjunction with `Suspense` to display fallback content while the lazy-loaded components are being fetched.  This improves perceived performance and reduces the time to interactive.
+
+*   **Code Splitting:** I leverage code splitting to divide the application into smaller, more manageable bundles. This allows the browser to download only the code that is necessary for the current route or feature, reducing the initial download size and improving load times.
 
 ## Performance Analysis (Lighthouse)
 
 This section summarizes the performance analysis of the application using Google Lighthouse. The scores and metrics provide insights into areas for potential optimization.
+These values are estimated and may vary.  The performance score is calculated directly from these metrics.
 
-### Scores
+**Scores:**
 
-*   **Performance:** 68/100 (Medium)
-*   **Accessibility:** 100/100
-*   **Best Practices:** 100/100
-*   **SEO:** 83/100
+| Category          | Score |
+|-------------------|-------|
+| Performance       | 99    |
+| Accessibility     | 100   |
+| Best Practices    | 100    |
+| SEO               | 54   |
 
-### Key Metrics
+**Performance Breakdown:**
 
-*   **First Contentful Paint (FCP):** 1.9 s
-*   **Largest Contentful Paint (LCP):** 3.5 s
-*   **Total Blocking Time (TBT):** 0 ms
-*   **Cumulative Layout Shift (CLS):** 0 ms
-*   **Speed Index:** 2.5 s
+| Metric                     | Value |
+|-----------------------------|-------|
+| First Contentful Paint (FCP) | 0.4 s    |
+| Largest Contentful Paint (LCP)| 0.5 s   |
+| Total Blocking Time (TBT)    | 0 ms   |
+| Cumulative Layout Shift (CLS)| 0   |
+| Speed Index (SI)             | 1.4 s    |
+
+**Score Ranges:**
+
+*   **0–49:**  Poor
+*   **50–89:** Needs Improvement
+*   **90–100:** Good
+
+---
+
